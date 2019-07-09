@@ -38,11 +38,13 @@ public class frmMenu extends javax.swing.JFrame {
             String line;
             String placas = "";
             String modelos ="";
+            String Precios ="";
+            String Disponible ="";
             int i, j = 0;
             //leer cada linea
             while ((line = br.readLine()) != null) {
                 i = 0;
-                //leer letra por letra
+                //Placas
                 while (line.charAt(i) != ';') {
                     placas += line.charAt(i);
                     i++;
@@ -52,6 +54,8 @@ public class frmMenu extends javax.swing.JFrame {
                 System.out.println(miscarros.placas[j]);
                 placas = "";
                 i++;
+                
+                //Modelo
                 while (line.charAt(i) != ';') {
                     modelos += line.charAt(i);
                     i++;
@@ -60,8 +64,35 @@ public class frmMenu extends javax.swing.JFrame {
                 miscarros.modelos[j] = modelos;
                 System.out.println(miscarros.modelos[j]);
                 modelos = "";
-
-                j++;
+                   j++;
+                //precios 
+                i++;
+                 while (line.charAt(i) != ';') {
+                    Precios += line.charAt(i);
+                    i++;
+                }
+                //llevar la placa leida al arreglo
+                
+                
+                miscarros.precios[j] =Double.parseDouble(Precios);
+                System.out.println(miscarros.precios[j]);
+                Precios = "";
+                
+                 i++;
+                //Disponible
+                 while (i<line.length()) {
+                    Disponible += line.charAt(i);
+                    i++;
+                }
+                //llevar la placa leida al arreglo
+                
+                
+                miscarros.disponible[j] = Boolean.parseBoolean(Disponible);
+                System.out.println(Disponible);
+                Disponible = "";
+      
+                
+                  
             }
 
         } catch (IOException e) {
